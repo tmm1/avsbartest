@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2F84EA802763EEBA00D222EC /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 2F84EA7F2763EEBA00D222EC /* README.md */; };
 		2FEDA0AF2761548D008E81E8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDA0AE2761548D008E81E8 /* AppDelegate.m */; };
 		2FEDA0B22761548D008E81E8 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2FEDA0B12761548D008E81E8 /* ViewController.m */; };
 		2FEDA0B52761548D008E81E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2FEDA0B32761548D008E81E8 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2F84EA7F2763EEBA00D222EC /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		2FEDA0AA2761548D008E81E8 /* avsbartest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = avsbartest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2FEDA0AD2761548D008E81E8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		2FEDA0AE2761548D008E81E8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -42,6 +44,7 @@
 		2FEDA0A12761548D008E81E8 = {
 			isa = PBXGroup;
 			children = (
+				2F84EA7F2763EEBA00D222EC /* README.md */,
 				2FEDA0AC2761548D008E81E8 /* avsbartest */,
 				2FEDA0AB2761548D008E81E8 /* Products */,
 			);
@@ -130,6 +133,7 @@
 			files = (
 				2FEDA0BA27615490008E81E8 /* LaunchScreen.storyboard in Resources */,
 				2FEDA0B727615490008E81E8 /* Assets.xcassets in Resources */,
+				2F84EA802763EEBA00D222EC /* README.md in Resources */,
 				2FEDA0B52761548D008E81E8 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

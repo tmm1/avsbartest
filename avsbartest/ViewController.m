@@ -7,6 +7,8 @@
 
 #import "ViewController.h"
 
+#define MAX_DELAY 1.0
+
 @import AVFoundation;
 
 @interface ViewController ()
@@ -89,11 +91,6 @@
   [self.synchronizer addBoundaryTimeObserverForTimes:@[[NSValue valueWithCMTime:CMTimeMake(1, 48000)]] queue:nil usingBlock:^{
     double t = CMTimeGetSeconds(self.synchronizer.currentTime);
     NSLog(@"synchronizer past zero! [%f]", t);
-    /*
-    if (t < 2.0) {
-      [self.synchronizer setRate:1.0 time:CMTimeMake(2, 1)];
-    }
-    */
   }];
 
   [self.renderer requestMediaDataWhenReadyOnQueue:self.queue usingBlock:^{
@@ -101,11 +98,10 @@
       double enqclock = CMTimeGetSeconds(CMTimeMake(enqueued, asbd.mSampleRate));
       double synclock = CMTimeGetSeconds(self.synchronizer.currentTime);
       double delay = enqclock - synclock;
-      if (delay > 1) {
+      if (MAX_DELAY > 0 && delay > MAX_DELAY) {
         usleep(50*1000);
+        continue;
       }
-      /*
-      */
 
       OSStatus err;
       CMSampleBufferRef sBuf;
@@ -137,7 +133,10 @@
       );
       assert(err == noErr);
       enqueued += samples;
-      NSLog(@"enqueued=%lld time=%f", enqueued, CMTimeGetSeconds(self.synchronizer.currentTime));
+      NSLog(@"enqueued=%f time=%f base=%f",
+            CMTimeGetSeconds(CMTimeMake(enqueued, asbd.mSampleRate)),
+            CMTimeGetSeconds(self.synchronizer.currentTime),
+            CMTimeGetSeconds(CMTimebaseGetTime(self.synchronizer.timebase)));
       [self.renderer enqueueSampleBuffer:sBuf];
       if (needPlay && enqueued/(double)asbd.mSampleRate > 0.128) {
         needPlay = NO;
